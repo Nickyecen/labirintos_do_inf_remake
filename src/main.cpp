@@ -1,22 +1,20 @@
 #include <raylib.h>
 #include <iostream>
 #include "audio/audio.hpp"
+#include "interface-state-machine/interface_state.hpp"
+#include "interface-state-machine/interface_state_machine.hpp"
+#include "main_menu/main_menu.hpp"
 
 int main() {
+    SetTraceLogLevel(LOG_ALL);
     InitWindow(800, 450, "raylib example");
 
-    Sound sound = Audio::get().loadSound("res/sound/ui_select.mp3");
+    InterfaceState* state = new MainMenuState();
+    InterfaceStateMachine* ism = new InterfaceStateMachine(state); 
 
-    Audio::get().playSound(sound);
-    WaitTime(0.2);
-    Audio::get().playSound(sound);
     while(!WindowShouldClose()) {
-
-
-        BeginDrawing();
-            ClearBackground(RAYWHITE);
-            DrawText("Text", 190, 200, 20, LIGHTGRAY);
-        EndDrawing();
+        ism->update();
+        ism->draw();
     }
 
     Audio::close(); 
