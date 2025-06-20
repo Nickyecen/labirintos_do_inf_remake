@@ -1,23 +1,24 @@
 #include <raylib.h>
 #include <iostream>
 #include "audio/audio.hpp"
-#include "interface-state-machine/interface_state.hpp"
-#include "interface-state-machine/interface_state_machine.hpp"
-#include "main_menu/main_menu.hpp"
+#include "state-machines/interface_state.hpp"
+#include "state-machines/interface_state_machine.hpp"
+#include "state-machines/state.hpp"
+#include "state-machines/state_machine.hpp"
+#include "menus/main-menu/main_menu.hpp"
+#include "menus/menus.hpp"
 
 int main() {
     SetTraceLogLevel(LOG_ALL);
     InitWindow(800, 450, "raylib example");
 
-    InterfaceState* state = new MainMenuState();
-    InterfaceStateMachine* ism = new InterfaceStateMachine(state); 
+    Menus* menus = new Menus();
+    StateMachine* game = new StateMachine(menus);
 
     while(!WindowShouldClose()) {
-        ism->update();
-        ism->draw();
+        game->update();
     }
 
-    Audio::close(); 
     CloseWindow();
 
     return 0;

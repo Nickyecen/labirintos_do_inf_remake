@@ -1,18 +1,18 @@
 #ifndef INTERFACE_STATE_MACHINE_HEADER
 #define INTERFACE_STATE_MACHINE_HEADER
 
+#include "state_machine.hpp"
 #include "interface_state.hpp"
 
-class InterfaceStateMachine {
-    public:
+class InterfaceStateMachine : public StateMachine {
     private:
         InterfaceState* _currentState;
 
     public:
         InterfaceStateMachine(InterfaceState* initialState);
-        void update();
-        void draw() const;
-    private:
+
+        virtual void update() override;
+        virtual void draw() const;
 };
 
 #endif

@@ -12,9 +12,7 @@ bool MainMenuState::isFinal() const {
     return false;
 }
 
-void MainMenuState::enter() {
-    TraceLog(LOG_DEBUG, "Entered state");
-}
+void MainMenuState::enter() {}
 
 InterfaceState* MainMenuState::update() {
     WaitTime(0.1);

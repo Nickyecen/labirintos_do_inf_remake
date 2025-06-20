@@ -2,13 +2,12 @@
 #include "raylib.h"
 
 InterfaceStateMachine::InterfaceStateMachine(InterfaceState* initialState): 
-_currentState(initialState) {
+StateMachine(initialState), _currentState(initialState) {
     initialState->enter();
 }
 
 void InterfaceStateMachine::update() {
-    InterfaceState* newState = _currentState->update();
-    if(newState) {
+    if(auto* newState = dynamic_cast<InterfaceState*>(_currentState->update())) {
         this->_currentState->exit();
         this->_currentState = newState;
         this->_currentState->enter();

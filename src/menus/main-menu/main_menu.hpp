@@ -1,7 +1,7 @@
 #ifndef MAIN_MENU_STATE_HEADER
 #define MAIN_MENU_STATE_HEADER
 
-#include "../interface-state-machine/interface_state.hpp"
+#include "../../state-machines/interface_state.hpp"
 #include "raylib.h"
 
 class MainMenuState : public InterfaceState {
