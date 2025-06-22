@@ -8,6 +8,10 @@ bool MainMenuState::shouldDraw() const {
     return true;
 }
 
+bool MainMenuState::shouldStop() const {
+    return WindowShouldClose();
+}
+
 bool MainMenuState::isFinal() const {
     return false;
 }

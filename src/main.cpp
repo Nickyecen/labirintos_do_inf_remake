@@ -14,10 +14,8 @@ int main() {
 
     Menus* menus = new Menus();
     StateMachine* game = new StateMachine(menus);
-
-    while(!WindowShouldClose()) {
-        game->update();
-    }
+    
+    game->run();
 
     CloseWindow();
 

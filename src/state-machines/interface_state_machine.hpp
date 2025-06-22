@@ -11,8 +11,7 @@ class InterfaceStateMachine : public StateMachine {
     public:
         InterfaceStateMachine(InterfaceState* initialState);
 
-        virtual void update() override;
-        virtual void draw() const;
+        virtual void run() override;
 };
 
 #endif

@@ -13,6 +13,7 @@ class MainMenuState : public InterfaceState {
         MainMenuState();
         ~MainMenuState();
         
+        bool shouldStop() const override;
         bool shouldDraw() const override;
         bool isFinal() const override;
 

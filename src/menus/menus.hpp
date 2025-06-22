@@ -17,7 +17,7 @@ class Menus : public State {
         virtual State* update() override;
         virtual void exit() override;
 
-        bool shouldStop() {
+        virtual bool shouldStop() const override {
             return _shouldStop || WindowShouldClose();
         }
         void setShouldStop(bool shouldStop) {_shouldStop = shouldStop;}

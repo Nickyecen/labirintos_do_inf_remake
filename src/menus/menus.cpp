@@ -7,13 +7,9 @@ bool Menus::isFinal() const {
 void Menus::enter() {
     InterfaceState* mainMenu = new MainMenuState();
     _ism = new InterfaceStateMachine(mainMenu);
-
-    while(!shouldStop()) {
-        _ism->update();
-        _ism->draw();
-    } 
+    _ism->run();
 }
 
-State* Menus::update() {}
+State* Menus::update() {return nullptr;}
 
 void Menus::exit() {}

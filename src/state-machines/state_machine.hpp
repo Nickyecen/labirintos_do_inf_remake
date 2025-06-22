@@ -9,7 +9,7 @@ class StateMachine {
 
     public:
         StateMachine(State* initialState);
-        virtual void update();
+        virtual void run();
 };
 
 #endif
