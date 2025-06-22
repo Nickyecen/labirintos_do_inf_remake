@@ -3,14 +3,17 @@
 
 #include "../../state-machines/interface_state.hpp"
 #include "raylib.h"
+#include "../../render/renderer.hpp"
 
 class MainMenuState : public InterfaceState {
     public:
     private:
         Color _backgroundColor = {0, 0, 0, 1};
+        Texture2D _backgroundTexture;
+        Renderer* _renderer;
 
     public:
-        MainMenuState();
+        MainMenuState(Renderer* renderer);
         ~MainMenuState();
         
         bool shouldStop() const override;

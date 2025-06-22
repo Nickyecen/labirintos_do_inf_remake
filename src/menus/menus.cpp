@@ -5,7 +5,8 @@ bool Menus::isFinal() const {
 }
 
 void Menus::enter() {
-    InterfaceState* mainMenu = new MainMenuState();
+    _renderer = new Renderer();
+    InterfaceState* mainMenu = new MainMenuState(_renderer);
     _ism = new InterfaceStateMachine(mainMenu);
     _ism->run();
 }

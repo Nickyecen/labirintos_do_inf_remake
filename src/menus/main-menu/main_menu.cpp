@@ -1,7 +1,7 @@
 #include "main_menu.hpp"
 #include "raylib.h"
 
-MainMenuState::MainMenuState() {}
+MainMenuState::MainMenuState(Renderer* renderer): _renderer(renderer) {}
 MainMenuState::~MainMenuState() {}
 
 bool MainMenuState::shouldDraw() const {
@@ -16,19 +16,19 @@ bool MainMenuState::isFinal() const {
     return false;
 }
 
-void MainMenuState::enter() {}
+void MainMenuState::enter() {
+    _backgroundTexture = LoadTexture("res/images/placeholder_background.jpg");
+}
 
 InterfaceState* MainMenuState::update() {
-    WaitTime(0.1);
-    this->_backgroundColor.r = (this->_backgroundColor.r + 1) % 255;
-    this->_backgroundColor.g = (this->_backgroundColor.g + 2) % 255;
-    this->_backgroundColor.b = (this->_backgroundColor.b + 3) % 255;
-
     return nullptr;
 }
 
 void MainMenuState::draw() const {
     ClearBackground(this->_backgroundColor);
+    _renderer->renderTexture2D(_backgroundTexture,
+                               RenderPosition::CENTER,
+                               RenderScale::KEEP_PROPORTION_FILL);
 }
 
 void MainMenuState::exit() {
