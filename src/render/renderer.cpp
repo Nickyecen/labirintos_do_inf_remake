@@ -1,6 +1,6 @@
 #include "renderer.hpp"
 
-void Renderer::renderTexture2D(Texture2D texture, RenderPosition position, RenderScale scale) const {
+void Renderer::renderTexture2D(Texture2D texture, RenderPosition position, RenderScale scale) {
     switch(scale) {
         case RenderScale::KEEP_PROPORTION_FILL: {
             float scaleW = (float) GetScreenWidth()/texture.width;
@@ -25,7 +25,7 @@ void Renderer::renderTexture2D(Texture2D texture, RenderPosition position, Rende
     } 
 }
 
-Vector2 Renderer::_getRelativePosition(int width, int height, RenderPosition position) const {
+Vector2 Renderer::_getRelativePosition(int width, int height, RenderPosition position) {
     int screen_width = GetScreenWidth();
     int screen_height = GetScreenHeight();
 
@@ -61,5 +61,5 @@ Vector2 Renderer::_getRelativePosition(int width, int height, RenderPosition pos
             break;      
     }
 
-    return (Vector2){xPos, yPos};
+    return (Vector2){(float) xPos, (float) yPos};
 }

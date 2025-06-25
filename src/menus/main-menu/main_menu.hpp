@@ -4,16 +4,16 @@
 #include "../../state-machines/interface_state.hpp"
 #include "raylib.h"
 #include "../../render/renderer.hpp"
+#include <memory>
 
 class MainMenuState : public InterfaceState {
     public:
     private:
         Color _backgroundColor = {0, 0, 0, 1};
         Texture2D _backgroundTexture;
-        Renderer* _renderer;
 
     public:
-        MainMenuState(Renderer* renderer);
+        MainMenuState();
         ~MainMenuState();
         
         bool shouldStop() const override;
@@ -21,7 +21,7 @@ class MainMenuState : public InterfaceState {
         bool isFinal() const override;
 
         virtual void enter() override;
-        virtual InterfaceState* update() override;
+        virtual std::unique_ptr<State> update() override;
         virtual void draw() const override;
         virtual void exit() override;
     private:

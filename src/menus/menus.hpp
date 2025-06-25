@@ -3,20 +3,20 @@
 
 #include "../state-machines/state.hpp"
 #include "../state-machines/interface_state.hpp"
-#include "../state-machines/interface_state_machine.hpp"
+#include "../state-machines/state_machine.hpp"
 #include "main-menu/main_menu.hpp"
 #include "../render/renderer.hpp"
+#include <memory>
 
 class Menus : public State {
     private:
-        InterfaceStateMachine* _ism;
+        std::unique_ptr<StateMachine> _interfaceStateMachine;
         bool _shouldStop = false;
-        Renderer* _renderer; 
 
     public:
         virtual bool isFinal() const override;
         virtual void enter() override;
-        virtual State* update() override;
+        virtual std::unique_ptr<State> update() override;
         virtual void exit() override;
 
         virtual bool shouldStop() const override {

@@ -22,9 +22,10 @@ enum RenderScale {
 
 class Renderer {
     private:
-        Vector2 _getRelativePosition(int width, int height, RenderPosition position) const;
+        Renderer();
+        static Vector2 _getRelativePosition(int width, int height, RenderPosition position);
     public:
-        virtual void renderTexture2D(Texture2D texture, RenderPosition position, RenderScale) const;
+        static void renderTexture2D(Texture2D texture, RenderPosition position, RenderScale);
 };
 
 #endif

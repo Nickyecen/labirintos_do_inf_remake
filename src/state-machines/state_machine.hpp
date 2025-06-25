@@ -5,11 +5,13 @@
 
 class StateMachine {
     private:
-        State* _currentState;
+        std::unique_ptr<State> _currentState;
 
     public:
-        StateMachine(State* initialState);
+        StateMachine(std::unique_ptr<State> initialState);
         virtual void run();
+
+        State* getCurrentState() const {return _currentState.get();}
 };
 
 #endif
